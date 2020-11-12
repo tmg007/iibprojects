@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='Cp1252'>
+  
+  <title>Responsive Table</title>
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+  <style>
+  * { 
+    margin: 0; 
+    padding: 0; 
+  }
+  body { 
+    font: 14px/1.4 Georgia, Serif; 
+  }
+  
+  /* 
+  Generic Styling, for Desktops/Laptops 
+  */
+  table { 
+    width: 100%; 
+    border-collapse: collapse; 
+  }
+  /* Zebra striping */
+  tr:nth-of-type(odd) { 
+    background: #eee; 
+  }
+  th { 
+    background: #333; 
+    color: white; 
+    font-weight: bold; 
+  }
+  td, th { 
+    padding: 6px; 
+    border: 1px solid #9B9B9B; 
+    text-align: left; 
+  }
+  @media 
+  only screen and (max-width: 760px),
+  (min-device-width: 768px) and (max-device-width: 1024px)  {
+    table, thead, tbody, th, td, tr { display: block; }
+    thead tr { position: absolute;top: -9999px;left: -9999px;}
+    tr { border: 1px solid #9B9B9B; }
+    td { border: none;border-bottom: 1px solid #9B9B9B; position: relative;padding-left: 50%; }
+    
+    td:before { position: absolute;top: 6px;left: 6px;width: 45%; padding-right: 10px; white-space: nowrap;}
+    
+    /*
+    Label the data
+    */
+td:nth-of-type(0):before { content: "DATE_OF_MATCH"; }
+td:nth-of-type(1):before { content: "MATCH_DETAILS"; }
+td:nth-of-type(2):before { content: "VENUE"; }
+td:nth-of-type(3):before { content: "RESULT"; }
+  }
+  
+  /* Smartphones (portrait and landscape) ----------- */
+  @media only screen
+  and (min-device-width : 320px)
+  and (max-device-width : 480px) {
+    body { 
+      padding: 0; 
+      margin: 0; 
+      width: 320px; }
+    }
+  
+  /* iPads (portrait and landscape) ----------- */
+  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+    body { 
+      width: 495px; 
+    }
+  }
+  
+  </style>
+  <!--<![endif]-->
+<script type="text/javascript">
+
+lsearch = function(){
+  //this.term = document.getElementById('S').value.toUpperCase();
+  var s = document.getElementById('search').value.toLowerCase();
+  rows = document.getElementById('data').getElementsByTagName('TR');
+  for(var i=0;i<rows.length;i++){
+    if (s =="" ){
+      rows[i].style.display ='';
+    } else if ( rows[i].innerText.toLowerCase().indexOf(s) != -1 ) {
+      rows[i].style.display ='';
+    } else {
+      rows[i].style.display ='none';
+    }
+  }
+  this.time = false;
+}
+
+</script>
+</head>
+
+<body>
+<div><input type="text" size="30" maxlength="1000" value="" id="search" onkeyup="lsearch();" /><input type="button" value="Go" onclick="lsearch();"/> </div>
+<table><thead><tr>	<th>DATE_OF_MATCH</th>
+	<th>MATCH_DETAILS</th>
+	<th>VENUE</th>
+	<th>RESULT</th>
+</tr></thead>
+<tbody id="data">
+
+	<tr>
+<td>Sep 19, Sat</td>
+<td>MI vs CSK, 1st Match</td>
+<td>Sheikh Zayed Stadium, Abu Dhabi</td>
+<td>Chennai Super Kings won by 5 wkts</td>
+	</tr>
+	<tr>
+<td>Sep 20, Sun</td>
+<td>DC vs KXIP, 2nd Match</td>
+<td>Dubai International Cricket Stadium , Dubai</td>
+<td>Match tied (Delhi Capitals won the Super Over)</td>
+	</tr>
+	<tr>
+<td>Sep 21, Mon</td>
+<td>SRH vs RCB, 3rd Match</td>
+<td>Dubai International Cricket Stadium , Dubai</td>
+<td>Royal Challengers Bangalore won by 10 runs</td>
+	</tr>
+	<tr>
+<td>Sep 22, Tue</td>
+<td>RR vs CSK, 4th Match</td>
+<td>Sharjah Cricket Stadium, Sharjah</td>
+<td>Rajasthan Royals won by 16 runs</td>
+	</tr>
+	<tr>
+<td>Sep 23, Wed</td>
+<td>KKR vs MI, 5th Match</td>
+<td>Sheikh Zayed Stadium, Abu Dhabi</td>
+<td>Mumbai Indians won by 49 runs</td>
+	</tr>
+	<tr>
+<td>Sep 24, Thu</td>
+<td>KXIP vs RCB, 6th Match</td>
+<td>Dubai International Cricket Stadium , Dubai</td>
+<td>Kings XI Punjab won by 97 runs</td>
+	</tr>
+	<tr>
+<td>Sep 25, Fri</td>
+<td>CSK vs DC, 7th Match</td>
+<td>Dubai International Cricket Stadium , Dubai</td>
+<td>Delhi Capitals won by 44 runs</td>
+	</tr>
+	<tr>
+<td>Sep 26, Sat</td>
+<td>KKR vs SRH, 8th Match</td>
+<td>Sheikh Zayed Stadium, Abu Dhabi</td>
+<td>Kolkata Knight Riders won by 7 wkts</td>
+	</tr>
+	<tr>
+<td>Sep 27, Sun</td>
+<td>RR vs KXIP, 9th Match</td>
+<td>Sharjah Cricket Stadium, Sharjah</td>
+<td>Rajasthan Royals won by 4 wkts</td>
+	</tr>
+	<tr>
+<td>Sep 28, Mon</td>
+<td>RCB vs MI, 10th Match</td>
+<td>Dubai International Cricket Stadium , Dubai</td>
+<td>Match tied (Royal Challengers Bangalore won the Super Over)</td>
+	</tr>
+	<tr>
+<td>Sep 29, Tue</td>
+<td>DC vs SRH, 11th Match</td>
+<td>Sheikh Zayed Stadium, Abu Dhabi</td>
+<td>Sunrisers Hyderabad won by 15 runs</td>
+	</tr>
+	<tr>
+<td>Sep 30, Wed</td>
+<td>RR vs KKR, 12th Match</td>
+<td>Dubai International Cricket Stadium , Dubai</td>
+<td>Kolkata Knight Riders won by 37 runs</td>
+	</tr>
+	<tr>
+<td>Oct 01, Thu</td>
+<td>KXIP vs MI, 13th Match</td>
+<td>Sheikh Zayed Stadium, Abu Dhabi</td>
+<td>Mumbai Indians won by 48 runs</td>
+	</tr>
+	<tr>
+<td>Oct 02, Fri</td>
+<td>CSK vs SRH, 14th Match</td>
+<td>Dubai International Cricket Stadium , Dubai</td>
+<td>Sunrisers Hyderabad won by 7 runs</td>
+	</tr>
+	<tr>
+<td>Oct 03, Sat</td>
+<td>RCB vs RR, 15th Match</td>
+<td>Sheikh Zayed Stadium, Abu Dhabi</td>
+<td>Royal Challengers Bangalore won by 8 wkts</td>
+	</tr>
+	<tr>
+<td>Oct 03, Sat</td>
+<td>DC vs KKR, 16th Match</td>
+<td>Sharjah Cricket Stadium, Sharjah</td>
+<td>Delhi Capitals won by 18 runs</td>
+	</tr>
+	<tr>
+<td>Oct 04, Sun</td>
+<td>MI vs SRH, 17th Match</td>
+<td>Sharjah Cricket Stadium, Sharjah</td>
+<td>Mumbai Indians won by 34 runs</td>
+	</tr>
+	<tr>
+<td>Oct 04, Sun</td>
+<td>KXIP vs CSK, 18th Match</td>
+<td>Dubai International Cricket Stadium , Dubai</td>
+<td>Chennai Super Kings won by 10 wkts</td>
+	</tr>
+	<tr>
+<td>Oct 05, Mon</td>
+<td>RCB vs DC, 19th Match</td>
+<td>Dubai International Cricket Stadium , Dubai</td>
+<td>Delhi Capitals won by 59 runs</td>
+	</tr>
+	<tr>
+<td>Oct 06, Tue</td>
+<td>MI vs RR, 20th Match</td>
+<td>Sheikh Zayed Stadium, Abu Dhabi</td>
+<td>Mumbai Indians won by 57 runs</td>
+	</tr>
+	<tr>
+<td>Oct 07, Wed</td>
+<td>KKKR vs CSK, 21st Match</td>
+<td>Sheikh Zayed Stadium, Abu Dhabi</td>
+<td>Kolkata Knight Riders won by 10 runs</td>
+	</tr>
+	<tr>
+<td>Oct 08, Thu</td>
+<td>SRH vs KXIP, 22nd Match</td>
+<td>Dubai International Cricket Stadium , Dubai</td>
+<td>Sunrisers Hyderabad won by 69 runs</td>
+	</tr>
+	<tr>
+<td>Oct 09, Fri</td>
+<td>RR vs DC, 23rd Match</td>
+<td>Sharjah Cricket Stadium, Sharjah</td>
+<td>Delhi Capitals won by 46 runs</td>
+	</tr>
+	<tr>
+<td>Oct 10, Sat</td>
+<td>KXIP vs KKR, 24th Match</td>
+<td>Sheikh Zayed Stadium, Abu Dhabi</td>
+<td>Kolkata Knight Riders won by 2 runs</td>
+	</tr>
+	<tr>
+<td>Oct 10, Sat</td>
+<td>CSK vs RCB, 25th Match</td>
+<td>Dubai International Cricket Stadium , Dubai</td>
+<td>Royal Challengers Bangalore won by 37 runs</td>
+	</tr>
+	<tr>
+<td>Oct 11, Sun</td>
+<td>SRH vs RR, 26th Match</td>
+<td>Dubai International Cricket Stadium , Dubai</td>
+<td>Rajasthan Royals won by 5 wkts</td>
+	</tr>
+	<tr>
+<td>Oct 11, Sun</td>
+<td>MI vs DC, 27th Match</td>
+<td>Sheikh Zayed Stadium, Abu Dhabi</td>
+<td>Mumbai Indians won by 5 wkts</td>
+	</tr>
+	<tr>
+<td>Oct 12, Mon</td>
+<td>RCB vs KKR, 28th Match</td>
+<td>Sharjah Cricket Stadium, Sharjah</td>
+<td>Royal Challengers Bangalore won by 82 runs</td>
+	</tr>
+	<tr>
+<td>Oct 13, Tue</td>
+<td>SRH vs CSK, 29th Match</td>
+<td>Dubai International Cricket Stadium , Dubai</td>
+<td>Chennai Super Kings won by 20 runs</td>
+	</tr>
+	<tr>
+<td>Oct 14, Wed</td>
+<td>DC vs RR, 30th Match</td>
+<td>Dubai International Cricket Stadium , Dubai</td>
+<td>Delhi Capitals won by 13 runs</td>
+	</tr>
+	<tr>
+<td>Oct 15, Thu</td>
+<td>RCB vs KXIP, 31st Match</td>
+<td>Sharjah Cricket Stadium, Sharjah</td>
+<td>Kings XI Punjab won by 8 wkts</td>
+	</tr>
+	<tr>
+<td>Oct 16, Fri</td>
+<td>MI vs KKR, 32nd Match</td>
+<td>Sheikh Zayed Stadium, Abu Dhabi</td>
+<td>Mumbai Indians won by 8 wkts</td>
+	</tr>
+	<tr>
+<td>Oct 17, Sat</td>
+<td>RR vs RCB, 33rd Match</td>
+<td>Dubai International Cricket Stadium , Dubai</td>
+<td>Royal Challengers Bangalore won by 7 wkts</td>
+	</tr>
+	<tr>
+<td>Oct 17, Sat</td>
+<td>DC vs CSK, 34th Match</td>
+<td>Sharjah Cricket Stadium, Sharjah</td>
+<td>Delhi Capitals won by 5 wkts</td>
+	</tr>
+	<tr>
+<td>Oct 18, Sun</td>
+<td>SRH vs KKR, 35th Match</td>
+<td>Sheikh Zayed Stadium, Abu Dhabi</td>
+<td>Match tied (Kolkata Knight Riders won the Super Over)</td>
+	</tr>
+	<tr>
+<td>Oct 18, Sun</td>
+<td>MI vs KXIP, 36th Match</td>
+<td>Dubai International Cricket Stadium , Dubai</td>
+<td>Match tied and Super Over tied - (Kings XI Punjab won the 2nd Super Over)</td>
+	</tr>
+	<tr>
+<td>Oct 19, Mon</td>
+<td>CSK vs RR, 37th Match</td>
+<td>Sheikh Zayed Stadium, Abu Dhabi</td>
+<td>Rajasthan Royals won by 7 wkts</td>
+	</tr>
+	<tr>
+<td>Oct 20, Tue</td>
+<td>KXIP vs DC, 38th Match</td>
+<td>Dubai International Cricket Stadium , Dubai</td>
+<td>Kings XI Punjab won by 5 wkts</td>
+	</tr>
+	<tr>
+<td>Oct 21, Wed</td>
+<td>KKR vs RCB, 39th Match</td>
+<td>Sheikh Zayed Stadium, Abu Dhabi</td>
+<td>Royal Challengers Bangalore won by 8 wkts</td>
+	</tr>
+	<tr>
+<td>Oct 22, Thu</td>
+<td>RR vs SRH, 40th Match</td>
+<td>Dubai International Cricket Stadium , Dubai</td>
+<td>Sunrisers Hyderabad won by 8 wkts</td>
+	</tr>
+	<tr>
+<td>Oct 23, Fri</td>
+<td>CSK vs MI, 41st Match</td>
+<td>Sharjah Cricket Stadium, Sharjah</td>
+<td>Mumbai Indians won by 10 wkts</td>
+	</tr>
+	<tr>
+<td>Oct 24, Sat</td>
+<td>KKR vs DC, 42nd Match</td>
+<td>Sheikh Zayed Stadium, Abu Dhabi</td>
+<td>Kolkata Knight Riders won by 59 runs</td>
+	</tr>
+	<tr>
+<td>Oct 24, Sat</td>
+<td>KXIP vs SRH, 43rd Match</td>
+<td>Dubai International Cricket Stadium , Dubai</td>
+<td>Kings XI Punjab won by 12 runs</td>
+	</tr>
+	<tr>
+<td>Oct 25, Sun</td>
+<td>RCB vs CSK, 44th Match</td>
+<td>Dubai International Cricket Stadium , Dubai</td>
+<td>Chennai Super Kings won by 8 wkts</td>
+	</tr>
+	<tr>
+<td>Oct 25, Sun</td>
+<td>RR vs MI, 45th Match</td>
+<td>Sheikh Zayed Stadium, Abu Dhabi</td>
+<td>Rajasthan Royals won by 8 wkts</td>
+	</tr>
+	<tr>
+<td>Oct 26, Mon</td>
+<td>KKR vs KXIP, 46th Match</td>
+<td>Sharjah Cricket Stadium, Sharjah</td>
+<td>Kings XI Punjab won by 8 wkts</td>
+	</tr>
+	<tr>
+<td>Oct 27, Tue</td>
+<td>SRH vs DC, 47th Match</td>
+<td>Dubai International Cricket Stadium , Dubai</td>
+<td>Sunrisers Hyderabad won by 88 runs</td>
+	</tr>
+	<tr>
+<td>Oct 28, Wed</td>
+<td>MI vs RCB, 48th Match</td>
+<td>Sheikh Zayed Stadium, Abu Dhabi</td>
+<td>Mumbai Indians won by 5 wkts</td>
+	</tr>
+	<tr>
+<td>Oct 29, Thu</td>
+<td>CSK vs KKR, 49th Match</td>
+<td>Dubai International Cricket Stadium , Dubai</td>
+<td>Chennai Super Kings won by 6 wkts</td>
+	</tr>
+	<tr>
+<td>Oct 30, Fri</td>
+<td>KXIP vs RR, 50th Match</td>
+<td>Sheikh Zayed Stadium, Abu Dhabi</td>
+<td>Rajasthan Royals won by 7 wkts</td>
+	</tr>
+	<tr>
+<td>Oct 31, Sat</td>
+<td>DC vs MI, 51st Match</td>
+<td>Dubai International Cricket Stadium , Dubai</td>
+<td>Mumbai Indians won by 9 wkts</td>
+	</tr>
+	<tr>
+<td>Oct 31, Sat</td>
+<td>RCB vs SRH, 52nd Match</td>
+<td>Sharjah Cricket Stadium, Sharjah</td>
+<td>Sunrisers Hyderabad won by 5 wkts</td>
+	</tr>
+	<tr>
+<td>Nov 01, Sun</td>
+<td>CSK vs KXIP, 53rd Match</td>
+<td>Sheikh Zayed Stadium, Abu Dhabi</td>
+<td>Chennai Super Kings won by 9 wkts</td>
+	</tr>
+	<tr>
+<td>Nov 01, Sun</td>
+<td>KKR vs RR, 54th Match</td>
+<td>Dubai International Cricket Stadium , Dubai</td>
+<td>Kolkata Knight Riders won by 60 runs</td>
+	</tr>
+	<tr>
+<td>Nov 02, Mon</td>
+<td>DC vs RCB, 55th Match</td>
+<td>Sheikh Zayed Stadium, Abu Dhabi</td>
+<td>Delhi Capitals won by 6 wkts</td>
+	</tr>
+	<tr>
+<td>Nov 03, Tue</td>
+<td>SRH vs MI, 56th Match</td>
+<td>Sharjah Cricket Stadium, Sharjah</td>
+<td>Sunrisers Hyderabad won by 10 wkts</td>
+	</tr>
+	<tr>
+<td>Nov 05, Thu</td>
+<td>MI vs DC, Qualifier 1</td>
+<td>Dubai International Cricket Stadium , Dubai</td>
+<td>Mumbai Indians won by 57 runs</td>
+	</tr>
+	<tr>
+<td>Nov 06, Fri</td>
+<td>SRH vs RCB, Eliminator</td>
+<td>Sheikh Zayed Stadium, Abu Dhabi</td>
+<td>Sunrisers Hyderabad won by 6 wkts</td>
+	</tr>
+	<tr>
+<td>Nov 08, Sun</td>
+<td>DC vs SRH, Qualifier 2</td>
+<td>Sheikh Zayed Stadium, Abu Dhabi</td>
+<td>Delhi Capitals won by 17 runs</td>
+	</tr>
+	<tr>
+<td>Nov 10, Tue</td>
+<td>MI vs DC, Final</td>
+<td>Dubai International Cricket Stadium , Dubai</td>
+<td>Mumbai Indians won by 5 wkts</td>
+	</tr>
+</tbody></table><!-- SQL:
+select *from IPL2020_RESULTS_TBL--></body></html>

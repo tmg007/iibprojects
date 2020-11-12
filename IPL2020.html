@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>IPL 2020 Results</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+      <script type="text/javascript">
+         window.onload = function() {
+         document.getElementById("Save").onclick = function fun() {
+         var team = document.forms["iplform"]["teams"].value;
+         var venue = document.forms["iplform"]["venue"].value;
+         var HttpClient = function() {
+         this.get = function(aUrl, aCallback) {
+         var anHttpRequest = new XMLHttpRequest();
+         //anHttpRequest.open( "GET", aUrl, true ); 
+         //anHttpRequest.setRequestHeader('Access-Control-Allow-Origin','*');
+         ///anHttpRequest.setRequestHeader('Access-Control-Allow-Methods','GET');
+         anHttpRequest.onreadystatechange = function() { 
+         if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200){
+         
+         aCallback(anHttpRequest.responseText);}
+         }
+         anHttpRequest.open( "GET", aUrl, true ); 
+         anHttpRequest.send( null ); 
+         }
+         }
+         var theurl="http://localhost:7800/ipl2020/v1/matchresult?Team="+team+"&Venue="+venue;
+         var client = new HttpClient();
+         client.get(theurl, function(response) { 
+         var response1 = JSON.parse(response);
+         
+         //alert(response);
+          var tblborder ="4";
+          var tbltop = "<table border=tblborder><tr><th>DATE</th><th>MATCH DETAILS</th><th>VENUE</th><th>RESULT</th></tr>";
+          var main="";
+          var trclass="success";
+          var tblbottom ="</table>";
+         for (i=0;i<response1.Result.length ; i++) {
+             main += "<tr><td>"+response1.Result[i].DATE_OF_MATCH+"</td><td>"+response1.Result[i].MATCH_DETAILS+"</td><td>"+response1.Result[i].VENUE+"</td><td>"+response1.Result[i].RESULT+"</td></tr>";
+         }
+          var tbl =tbltop + main + tblbottom;
+          document.getElementById("matchresult").innerHTML=tbl;
+         })}}; 
+      </script>
+   </head>
+   <body>
+      <center>
+      <h1>IPL 2020 RESULTS</h1>
+      </br></br></br>
+      <form name="iplform">
+         <select name="teams" id="teams">
+            <option value="select team">SELECT TEAM</option>
+            <option value="All">All</option>
+            <option value="MI">MI</option>
+            <option value="DC">DC</option>
+            <option value="SRH">SRH</option>
+            <option value="RCB">RCB</option>
+            <option value="KKR">KKR</option>
+            <option value="KXIP">KXIP</option>
+            <option value="CSK">CSK</option>
+            <option value="RR">RR</option>
+         </select>
+         <select name="venue" id="venue">
+            <option value="SELECT VENUE">SELECT VENUE</option>
+            <option value="All">All</option>
+            <option value="Sheikh Zayed Stadium, Abu Dhabi">Sheikh Zayed Stadium, Abu Dhabi</option>
+            <option value="Dubai International Cricket Stadium , Dubai">Dubai International Cricket Stadium , Dubai</option>
+            <option value="Sharjah Cricket Stadium, Sharjah">Sharjah Cricket Stadium, Sharjah</option>
+         </select>
+         <input type="button" id="Save" onclick="f1()" value="Search"/> </br></br></br>
+      </form>
+      <center>
+      <div id = "matchresult"> </div>
+   </body>
+</html>
+
